@@ -6,7 +6,7 @@ module.exports = function (deps) {
   while (deps.length) {
     for (var i = 0; i < deps.length; i++) {
       var dep = deps[i]
-      var needs = Object.keys(dep.needs)
+      var needs = dep.needs
 
       // Check needs & build an API object of 'needs' to give to the dep being created's 'create' function
       var api = {}

@@ -4,7 +4,7 @@ var combine = require('..')
 test('one', function (t) {
   var foo = {
     gives: 'foo',
-    needs: {},
+    needs: [],
     create: function (needs) { return 'foo' }
   }
 
@@ -22,7 +22,7 @@ test('one', function (t) {
 test('bad one', function (t) {
   var foo = {
     gives: 'foo',
-    needs: {bar: true},
+    needs: ['bar'],
     create: function (needs) { return 'foo' }
   }
 
@@ -39,7 +39,7 @@ test('bad one', function (t) {
 test('three', function (t) {
   var hyper = {
     gives: 'hyperdb',
-    needs: {},
+    needs: [],
     create: function (needs) { return {name:'hyperdb'} }
   }
 
@@ -51,7 +51,7 @@ test('three', function (t) {
 
   var db = {
     gives: 'database',
-    needs: { hyperdb: true, leveldb: true },
+    needs: ['hyperdb', 'leveldb'],
     create: function (needs) {
       return {
         doWork: function () {
