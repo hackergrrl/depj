@@ -23,9 +23,8 @@ module.exports = function (deps) {
       if (!gotAll) continue
 
       // Create the dep
-      var obj = dep.create(needs)
+      var obj = dep.create(api)
       res[dep.gives] = obj
-      console.log('resolved', dep.gives)
       foundOne = true
     }
 
