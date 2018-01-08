@@ -1,7 +1,42 @@
 var test = require('tape')
 var combine = require('..')
 
-test('simple', function (t) {
+test('one', function (t) {
+  var foo = {
+    gives: 'foo',
+    needs: {},
+    create: function (needs) { return 'foo' }
+  }
+
+  try {
+    var res = combine([foo])
+    t.ok(true)
+  } catch (err) {
+    t.fail()
+  }
+
+  t.deepEquals(res, { foo: 'foo' })
+  t.end()
+})
+
+test('bad one', function (t) {
+  var foo = {
+    gives: 'foo',
+    needs: {bar: true},
+    create: function (needs) { return 'foo' }
+  }
+
+  try {
+    var res = combine([foo])
+    t.fail()
+  } catch (err) {
+    t.ok(true)
+  }
+
+  t.end()
+})
+
+test('three', function (t) {
   var hyper = {
     gives: 'hyperdb',
     needs: {},
@@ -38,3 +73,4 @@ test('simple', function (t) {
   t.deepEquals(res.database.doWork(), { hyperdb: res.hyperdb, leveldb: res.leveldb })
   t.end()
 })
+
