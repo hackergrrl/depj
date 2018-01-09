@@ -1,9 +1,9 @@
 # depj
 
-> maximally simple dependency injection
+> very simple dependency injection
 
-Inspired heavily by [depject](https://github.com/depject/depject), but even
-simpler.
+Inspired heavily by [depject](https://github.com/depject/depject). Accepts
+dependencies that are *any* type of javascript object.
 
 ## Usage
 
