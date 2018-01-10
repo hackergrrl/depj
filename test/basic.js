@@ -74,3 +74,34 @@ test('three', function (t) {
   t.end()
 })
 
+test('multiples', function (t) {
+  var foo = {
+    gives: 'foo',
+    needs: [],
+    create: function (needs) { return {name:'foo 1'} }
+  }
+
+  var foo2 = {
+    gives: 'foo',
+    needs: {},
+    create: function (needs) { return {name:'foo 2'} }
+  }
+
+  var bar = {
+    gives: 'bar',
+    needs: ['foo'],
+    create: function (needs) {
+      return { foo: needs.foo }
+    }
+  }
+
+  try {
+    var res = combine([foo, foo2, bar])
+    t.ok(true)
+  } catch (err) {
+    t.fail()
+  }
+
+  t.equals(res.foo.name, 'foo 2')
+  t.end()
+})
