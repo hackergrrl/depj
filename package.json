@@ -2,7 +2,7 @@
   "name": "depj",
   "description": "very simple dependency injection",
   "author": "Stephen Whitmore <sww@eight.net>",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "url": "git://github.com/noffle/depj.git"
   },
