@@ -13,7 +13,7 @@ module.exports = function (deps) {
       var gotAll = true
       for (var j = 0; j < needs.length; j++) {
         var need = needs[j]
-        console.log('checking dep', need, 'for', dep.gives)
+        // console.log('checking dep', need, 'for', dep.gives)
         if (!res[need]) {
           gotAll = false
           break
