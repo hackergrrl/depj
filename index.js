@@ -1,4 +1,4 @@
-module.exports = function (deps) {
+module.exports = async function (deps) {
   var res = {}
 
   var foundOne = false
@@ -23,8 +23,12 @@ module.exports = function (deps) {
       if (!gotAll) continue
 
       // Create the dep
-      var obj = dep.create(api)
-      res[dep.gives] = obj
+      var obj = await dep.create(api, dep.opts)
+      if (typeof dep.gives === 'string') {
+        res[dep.gives] = obj
+      } else if (Array.isArray(dep.gives)) {
+        dep.gives.forEach(key => { res[key] = obj[key] })
+      }
       foundOne = true
     }
 
